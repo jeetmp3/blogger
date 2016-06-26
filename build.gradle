@@ -13,8 +13,16 @@ buildscript {
     }
 }
 
+apply plugin: 'war'
+
 group = 'blogger'
 version = '1.0'
+
+war {
+    baseName = 'ROOT'
+    version = ''
+    destinationDir = file('webapps')
+}
 
 allprojects {
     apply plugin: 'java'
@@ -40,6 +48,7 @@ allprojects {
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter"
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     compile project(":core")
     compile project(":admin")
     compile project(":data")
