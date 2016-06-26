@@ -27,7 +27,6 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'propdeps'
     apply plugin: 'propdeps-idea'
-//    apply plugin: 'checkstyle'
     apply plugin: 'spring-boot'
 
     repositories {
