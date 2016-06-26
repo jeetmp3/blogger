@@ -4,10 +4,9 @@ import me.blogger.admin.service.SpringSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
-import java.util.Optional;
 
 /**
  * @author Jitendra Singh.
@@ -23,9 +22,9 @@ public class AdminControllerAdvice {
 	@ModelAttribute
 	public void globalModelAttributes(Model model) {
 		if (springSecurityService.isLoggedIn()) {
-			Optional<UserDetails> userDetails = springSecurityService.getUserDetails();
-			if (userDetails.isPresent()) {
-				model.addAttribute(CURRENT_USER, userDetails.get());
+			UserDetails userDetails = springSecurityService.getUserDetails();
+			if (!ObjectUtils.isEmpty(userDetails)) {
+				model.addAttribute(CURRENT_USER, userDetails);
 			}
 		}
 	}

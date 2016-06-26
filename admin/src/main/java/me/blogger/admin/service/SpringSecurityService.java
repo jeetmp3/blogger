@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Optional;
 import java.util.logging.Logger;
 
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
@@ -26,22 +25,22 @@ public class SpringSecurityService {
 		);
 	}
 
-	public Optional<UserDetails> getUserDetails() {
+	public UserDetails getUserDetails() {
 		if (isLoggedIn()) {
 			Object principal = getContext().getAuthentication().getPrincipal();
 			if (principal instanceof UserDetails)
-				return Optional.of((UserDetails) principal);
+				return (UserDetails) principal;
 		}
-		return Optional.empty();
+		return null;
 	}
 
-	public Optional<String> currentUserRole() {
+	public String currentUserRole() {
 		if (isLoggedIn()) {
-			Optional<UserDetails> details = getUserDetails();
-			if (details.isPresent())
-				return Optional.of(details.get().getAuthorities().stream().findFirst().get().getAuthority());
+			UserDetails details = getUserDetails();
+			if (!ObjectUtils.isEmpty(details))
+				return details.getAuthorities().stream().findFirst().get().getAuthority();
 		}
-		return Optional.empty();
+		return null;
 	}
 
 }
