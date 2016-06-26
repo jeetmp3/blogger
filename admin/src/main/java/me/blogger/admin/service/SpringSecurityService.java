@@ -1,10 +1,12 @@
 package me.blogger.admin.service;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
@@ -37,8 +39,10 @@ public class SpringSecurityService {
 	public String currentUserRole() {
 		if (isLoggedIn()) {
 			UserDetails details = getUserDetails();
-			if (!ObjectUtils.isEmpty(details))
-				return details.getAuthorities().stream().findFirst().get().getAuthority();
+			if (!ObjectUtils.isEmpty(details)) {
+				Collection<? extends GrantedAuthority> authorities = details.getAuthorities();
+				return authorities.toArray(new String[authorities.size()])[0];
+			}
 		}
 		return null;
 	}
