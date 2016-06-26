@@ -1,6 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/blogger
+      uri: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
       username: admin
-      password: ngYbZEtIPrkG
+      password: 9NhBjtxExUV4
+      database: jblog

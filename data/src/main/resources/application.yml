@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: qa
   data:
     mongodb:
       uri: mongodb://localhost/blogger
