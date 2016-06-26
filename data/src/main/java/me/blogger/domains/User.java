@@ -4,7 +4,7 @@ import me.blogger.utils.ApplicationContextHolder;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author Jitendra Singh.
@@ -15,7 +15,7 @@ public class User extends AbstractDomain<User> {
 	@Indexed(unique = true)
 	private String email;
 	private String password;
-	private LocalDate dateOfBirth;
+	private Date dateOfBirth;
 	private String profilePicture;
 	private String about;
 	private String role;
@@ -48,11 +48,11 @@ public class User extends AbstractDomain<User> {
 		return this;
 	}
 
-	public LocalDate getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public User setDateOfBirth(LocalDate dateOfBirth) {
+	public User setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 		return this;
 	}
