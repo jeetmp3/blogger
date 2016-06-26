@@ -1,0 +1,1 @@
+var blogger = angular.module("blogger", []);

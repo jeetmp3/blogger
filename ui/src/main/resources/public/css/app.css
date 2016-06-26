@@ -1,0 +1,31 @@
+.logo {
+    border-radius: 10%;
+    border: 2px solid #fff;
+}
+
+.blog-form input[type="text"] {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+}
+.blog-form input[type="text"]:focus,.blog-form input[type="text"].focus {
+    outline: none;
+    border-bottom: solid 2px #969696;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,65 @@
+allprojects {
+    apply plugin: 'groovy'
+
+    configurations {
+        integrationTestCompile.extendsFrom testCompile
+        integrationTestRuntime.extendsFrom testRuntime
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        testCompile("junit:junit:$junitVersion")
+        testCompile("org.assertj:assertj-core:$assertjVersion")
+
+        testCompile "org.spockframework:spock-core:$spockVersion"
+        testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
+        testCompile "org.codehaus.groovy:groovy:$groovyVersion"
+        testCompile "org.skyscreamer:jsonassert:$jsonassertVersion"
+
+        integrationTestCompile "org.spockframework:spock-spring:$spockVersion"
+        integrationTestCompile 'org.springframework:spring-test'
+    }
+
+    sourceSets {
+        integrationTest {
+            java.srcDir file('src/integration-test/java')
+            groovy.srcDirs file('src/integration-test/groovy')
+            resources.srcDir file('src/integration-test/resources')
+            compileClasspath = sourceSets.main.output + sourceSets.test.output + configurations.integrationTestCompile
+            runtimeClasspath = output + compileClasspath + configurations.integrationTestRuntime
+        }
+    }
+
+    task integrationTest(type: Test, dependsOn: jar) {
+        testClassesDir = sourceSets.integrationTest.output.classesDir
+        logging.captureStandardOutput(LogLevel.INFO)
+        classpath = sourceSets.integrationTest.runtimeClasspath
+        maxParallelForks = 1
+        reports {
+            html.destination = project.file("$project.buildDir/reports/integration-tests/")
+            junitXml.destination = project.file("$project.buildDir/integration-test-results/")
+        }
+    }
+
+    tasks.withType(Test) {
+        reports.html.destination = file("${reporting.baseDir}/${name}")
+    }
+
+    test {
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
+
+    integrationTest {
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+        systemProperties = System.properties
+    }
+}

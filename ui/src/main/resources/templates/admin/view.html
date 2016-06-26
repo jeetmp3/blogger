@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="layouts/main :: header('List Blogs')">
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+    </th:block>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+</head>
+<body>
+    <th:block th:include="layouts/main :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
+
+    </th:block>
+    <div id="blog-content" class="content container">
+        <div class="posts">
+            <div class="post">
+                <h1 class="post-title" th:text="${blog.title}">
+                </h1>
+                <span class="post-date"
+                      th:text="${T(me.blogger.admin.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></span>
+                <p th:utext="${blog.content}"></p>
+            </div>
+        </div>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

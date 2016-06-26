@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogger | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="../../public/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../../public/css/jquery-ui.css" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface"/>
+    <style>
+        .login__form {
+            top: 15% !important;
+        }
+        .login__input {
+            width: 30rem;
+        }
+        .demo {
+            width: 40rem;
+            left: 45% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <div class="demo">
+            <div class="login">
+                <div class="login__form">
+                    <div class="login__row">
+                        <input type="text" class="login__input name" placeholder="Username"/>
+                    </div>
+                    <div class="login__row">
+                        <input type="text" class="login__input name" placeholder="Email"/>
+                    </div>
+                    <div class="login__row">
+                        <input type="password" class="login__input pass" placeholder="Password"/>
+                    </div>
+                    <div class="login__row">
+                        <input type="password" class="login__input pass" placeholder="Confirm Password"/>
+                    </div>
+                    <div class="login__row">
+                        <input id="dob" type="text" class="login__input name" placeholder="DD / MM / YYYY"/>
+                    </div>
+                    <div class="login__row">
+                        <input type="file" class="login__input name" placeholder="Profile Picture"/>
+                    </div>
+                    <button type="button" class="login__submit">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='../../public/js/jquery.min.js' th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/index.js}" src="../../public/js/index.js"></script>
+    <script th:src="@{/js/jquery-ui.js}" src="../../public/js/jquery-ui.js"></script>
+    <script>
+        jQuery("#dob").datepicker();
+    </script>
+</body>
+</html>

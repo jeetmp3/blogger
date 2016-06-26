@@ -1,0 +1,4 @@
+application:
+    image:
+        upload:
+            path: /media/jitendra/Media/Personal/code-world/blogger/images

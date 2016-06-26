@@ -1,0 +1,22 @@
+// please make sure properties are sorted alphabetically
+ext {
+    assertjVersion = '3.0.0'
+    bootProjects = subprojects.findAll { it.name in ['tb-core', 'tb-security'] }
+    checkstyleVersion = '6.16.1'
+    commonsCollectionsVersion = '3.2.1'
+    commonsLangVersion = '2.6'
+    googleGuavaVersion = '19.0'
+    groovyVersion = '2.4.4'
+    gsonVersion = '2.2.4'
+    httpasyncclientVersion = '4.1'
+    httpclientVersion = '4.5.1'
+    jacksonAnnotationsVersion = '2.7.4'
+    jacksonCoreVersion = '2.7.4'
+    jacksonDatabindVersion = '2.7.4'
+    javaVersion = '1.8'
+    jsonassertVersion = '1.2.3'
+    junitVersion = '4.12'
+    spockVersion = '0.7-groovy-2.0'
+    twitter4jCoreVersion = '4.0.4'
+//    spockVersion = '1.0-groovy-2.3'
+}

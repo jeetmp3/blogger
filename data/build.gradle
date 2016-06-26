@@ -1,0 +1,5 @@
+dependencies {
+    optional "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb"
+    compile project(":core")
+}

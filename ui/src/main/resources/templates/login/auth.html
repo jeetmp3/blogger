@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Blogger | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'/>
+    <link rel="stylesheet" href="../../public/css/style.css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+    <div class="cont" th:attr="style='background-image: url(/image/background.jpg) !important;'">
+        <div class="demo">
+            <div class="login">
+                <div class="login__check"></div>
+                <form id="login-form" action="/login/auth" th:action="@{/login/auth}" method="post">
+                    <div class="login__form">
+                        <div class="login__error" th:if="${param.error != null}">Invalid username/password</div>
+                        <div class="login__row">
+                            <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+                                <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+                            </svg>
+                            <input type="text" name="username" class="login__input name" placeholder="Username" required="true"/>
+                        </div>
+                        <div class="login__row">
+                            <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+                                <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+                            </svg>
+                            <input type="password" name="password" class="login__input pass" placeholder="Password" required="true"/>
+                        </div>
+                        <button type="button" class="login__submit">Sign in</button>
+                        <!--<p class="login__signup">-->
+                            <!--Don't have an account? &nbsp;-->
+                            <!--<a href="/login/register" th:href="@{/login/register}">Sign up</a>-->
+                        <!--</p>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src='../../public/js/jquery.min.js' th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/index.js}" src="../../public/js/index.js"></script>
+</body>
+</html>
