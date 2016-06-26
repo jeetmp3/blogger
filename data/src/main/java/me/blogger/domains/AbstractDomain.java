@@ -1,6 +1,6 @@
 package me.blogger.domains;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author Jitendra Singh.
@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 public abstract class AbstractDomain<T> {
 
 	private String id;
-	private LocalDateTime dateCreated;
-	private LocalDateTime lastUpdated;
+	private Date dateCreated;
+	private Date lastUpdated;
 	private boolean active;
 
 	public String getId() {
@@ -21,20 +21,20 @@ public abstract class AbstractDomain<T> {
 		return (T) this;
 	}
 
-	public LocalDateTime getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public T setDateCreated(LocalDateTime dateCreated) {
+	public T setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 		return (T)this;
 	}
 
-	public LocalDateTime getLastUpdated() {
+	public Date getLastUpdated() {
 		return lastUpdated;
 	}
 
-	public T setLastUpdated(LocalDateTime lastUpdated) {
+	public T setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 		return (T)this;
 	}

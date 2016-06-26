@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Jitendra Singh.
@@ -26,7 +26,7 @@ public class AdminService {
 		Blog blog = new Blog().setTitle(blogCO.getTitle())
 				.setContent(blogCO.getContent())
 				.setDescription(blogCO.getDescription())
-				.setDateCreated(LocalDateTime.now())
+				.setDateCreated(new Date())
 				.setActive(true);
 		blogRepository.save(blog);
 	}
@@ -34,7 +34,11 @@ public class AdminService {
 	public List<BlogDTO> listBlog() {
 		List<Blog> blogs = blogRepository.findAll();
 		if (!ObjectUtils.isEmpty(blogs)) {
-			return blogs.stream().map(BlogDTO::new).collect(Collectors.toList());
+			List<BlogDTO> blogDTOs = new ArrayList<>();
+			for(Blog blog : blogs) {
+				blogDTOs.add(new BlogDTO(blog));
+			}
+			return blogDTOs;
 		}
 		return Collections.emptyList();
 	}

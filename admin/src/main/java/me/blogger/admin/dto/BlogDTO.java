@@ -3,6 +3,7 @@ package me.blogger.admin.dto;
 import me.blogger.domains.Blog;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author Jitendra Singh.
@@ -12,7 +13,7 @@ public class BlogDTO {
 	private String id;
 	private String title;
 	private String description;
-	private LocalDateTime dateCreated;
+	private Date dateCreated;
 
 	public BlogDTO(Blog blog) {
 		this.id = blog.getId();
@@ -33,7 +34,7 @@ public class BlogDTO {
 		return description;
 	}
 
-	public LocalDateTime getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 }

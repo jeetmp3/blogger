@@ -25,7 +25,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		logger.config("Simple Url handler configuring");
 		if (!ObjectUtils.isEmpty(mappings)) {
 			logger.config("Static url mappings fetched. " + mappings.toString());
-			mappings.forEach(registry::addRedirectViewController);
+			for (Map.Entry<String, String> map : mappings.entrySet()) {
+				registry.addRedirectViewController(map.getKey(), map.getValue());
+			}
 		}
 	}
 
