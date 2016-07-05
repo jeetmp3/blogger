@@ -14,6 +14,7 @@ public class BloggerUserDetails extends User {
 
 	private String id;
 	private String name;
+	private String email;
 	private String profilePicture;
 	private String about;
 
@@ -26,9 +27,10 @@ public class BloggerUserDetails extends User {
 	}
 
 	public BloggerUserDetails(me.blogger.domains.User user) {
-		this(user.getEmail(), user.getPassword(), Collections.singletonList(new SimpleGrantedAuthority(user.getRole())));
+		this(user.getUsername(), user.getPassword(), Collections.singletonList(new SimpleGrantedAuthority(user.getRole())));
 		this.id = user.getId();
 		this.name = user.getName();
+		this.email = user.getEmail();
 		this.profilePicture = user.getProfilePicture();
 		this.about = user.getAbout();
 	}
@@ -47,5 +49,9 @@ public class BloggerUserDetails extends User {
 
 	public String getAbout() {
 		return about;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 }

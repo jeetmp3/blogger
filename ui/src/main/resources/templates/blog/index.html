@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layouts/main :: header('')">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="container">
+            <div class="sidebar-about">
+                <h2>
+                    <a href="/">Blogger</a>
+                </h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/" class="sidebar-nav-item active">Home</a>
+                <a href="/" class="sidebar-nav-item">About</a>
+                <span class="sidebar-nav-item">span</span>
+            </nav>
+            <p>@2015</p>
+        </div>
+    </div>
+
+    <div id="blog-content" class="content container">
+        <div class="posts">
+            <div class="post" th:each="blog : ${blogs}">
+                <h2 class="post-title">
+                    <a href="javascript:void(0)" th:text="${blog.title}"
+                       th:href="@{${'/blog/'+blog.author.username+'/'+blog.year+'/'+blog.month+'/'+blog.day+'/'+blog.titleLink}}">
+                    </a>
+                </h2>
+                <span class="post-date font-size-15px">
+                    <span>
+                        <a href="" th:text="${blog.author.name}"></a>
+                    </span>
+                    <strong class="margin-left-10">
+                        <em th:text="${T(me.blogger.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></em>
+                    </strong>
+                </span>
+                <p th:text="${blog.description}"></p>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:include="layouts/main :: scripts">
+        <script src="../../public/js/angular.min.js" th:src="@{/js/angular.min.js}"></script>
+        <script src="../../public/js/angular/blogger.js" th:src="@{/js/angular/blogger.js }"></script>
+    </th:block>
+</body>
+</html>

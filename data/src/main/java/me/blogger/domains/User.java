@@ -13,6 +13,8 @@ public class User extends AbstractDomain<User> {
 
 	private String name;
 	@Indexed(unique = true)
+	private String username;
+	@Indexed(unique = true)
 	private String email;
 	private String password;
 	private LocalDate dateOfBirth;
@@ -26,6 +28,15 @@ public class User extends AbstractDomain<User> {
 
 	public User setName(String name) {
 		this.name = name;
+		return this;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public User setUsername(String username) {
+		this.username = username;
 		return this;
 	}
 

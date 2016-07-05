@@ -1,4 +1,5 @@
 dependencies {
+    compile project(":data")
     compile "org.springframework.boot:spring-boot-starter-web"
     optional "org.springframework.boot:spring-boot-configuration-processor"
 }

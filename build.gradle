@@ -40,9 +40,10 @@ allprojects {
         optional("org.springframework.boot:spring-boot-devtools")
     }
 
-    bootRun {
-        addResources = true
-    }
+}
+
+bootRun {
+    addResources = true
 }
 
 dependencies {

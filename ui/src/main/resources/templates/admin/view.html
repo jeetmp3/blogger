@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="layouts/main :: header('List Blogs')">
+    <th:block th:include="layouts/admin :: header">
         <meta charset="UTF-8"/>
         <title>Title</title>
     </th:block>
@@ -9,7 +9,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
 </head>
 <body>
-    <th:block th:include="layouts/main :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
+    <th:block th:include="layouts/admin :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
 
     </th:block>
     <div id="blog-content" class="content container">
@@ -18,7 +18,7 @@
                 <h1 class="post-title" th:text="${blog.title}">
                 </h1>
                 <span class="post-date"
-                      th:text="${T(me.blogger.admin.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></span>
+                      th:text="${T(me.blogger.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></span>
                 <p th:utext="${blog.content}"></p>
             </div>
         </div>

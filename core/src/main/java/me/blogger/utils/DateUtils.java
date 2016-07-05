@@ -1,4 +1,4 @@
-package me.blogger.admin.utils;
+package me.blogger.utils;
 
 import org.springframework.util.ObjectUtils;
 

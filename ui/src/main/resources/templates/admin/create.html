@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="layouts/main :: header('Create New')">
+    <th:block th:include="layouts/admin :: header">
         <meta charset="UTF-8"/>
         <title>Title</title>
     </th:block>
     <link href="../../public/css/app.css" th:href="@{/css/app.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <th:block th:include="layouts/main :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
+    <th:block th:include="layouts/admin :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
 
     </th:block>
     <div id="blog-content" class="content container">
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <th:block th:replace="layouts/main :: scripts">
+    <th:block th:replace="layouts/admin :: scripts">
         <script src="../../public/js/jquery-ui.js"></script>
     </th:block>
     <script src="../../public/js/ckeditor/ckeditor.js" th:src="@{/js/ckeditor/ckeditor.js}"></script>

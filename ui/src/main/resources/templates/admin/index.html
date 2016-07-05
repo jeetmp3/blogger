@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="layouts/main :: header('List Blogs')">
+    <th:block th:include="layouts/admin :: header">
         <meta charset="UTF-8"/>
         <title>Title</title>
     </th:block>
 </head>
 <body>
-    <th:block th:include="layouts/main :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
+    <th:block th:include="layouts/admin :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
 
     </th:block>
     <div id="blog-content" class="content container">
-        <table>
+        <table class="blogs-table-list">
             <tr th:each="blog, status : ${blogs}">
                 <td th:text="${status.index + 1}"></td>
                 <td>
                     <a href="javascript:void(0)" th:href="@{/admin/view(id=${blog.id})}" th:text="${blog.title}"></a>
                 </td>
                 <td th:text="${blog.description}"></td>
-                <td th:text="${T(me.blogger.admin.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></td>
+                <td th:text="${T(me.blogger.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></td>
             </tr>
         </table>
     </div>
-    <th:block th:include="layouts/main :: scripts">
+    <th:block th:include="layouts/admin :: scripts">
         <script src="../../public/js/jquery-ui.js"></script>
     </th:block>
 </body>

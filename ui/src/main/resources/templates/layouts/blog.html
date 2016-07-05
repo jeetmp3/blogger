@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="list(blogs)">
+    <div class="posts">
+        <div class="post" th:each="blog : ${blogs}">
+            <h2 class="post-title">
+                <a href="javascript:void(0)" th:text="${blog.title}"
+                   th:href="@{${'/blog/'+blog.author.username+'/'+blog.year+'/'+blog.month+'/'+blog.day+'/'+blog.titleLink}}">
+                </a>
+            </h2>
+                    <span class="post-date font-size-15px">
+                        <span>
+                            <a href="" th:text="${blog.author.name}"></a>
+                        </span>
+                        <strong class="margin-left-10">
+                            <em th:text="${T(me.blogger.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></em>
+                        </strong>
+                    </span>
+            <p th:text="${blog.description}"></p>
+        </div>
+    </div>
+</th:block>
+</html>
