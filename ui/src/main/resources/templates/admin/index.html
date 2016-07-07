@@ -18,7 +18,7 @@
                     <a href="javascript:void(0)" th:href="@{/admin/view(id=${blog.id})}" th:text="${blog.title}"></a>
                 </td>
                 <td th:text="${blog.description}"></td>
-                <td th:text="${T(me.blogger.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></td>
+                <td th:text="${T(com.myblogspro.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></td>
             </tr>
         </table>
     </div>

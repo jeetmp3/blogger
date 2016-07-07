@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="layouts/main :: header(${blog.author.name + 'Blogs'})">
+<head th:include="layouts/main :: header(${user.name + 'Blogs'})">
 </head>
 <body>
 
-    <th:block th:include="layouts/main :: sidebar(${blog.author})">
+    <th:block th:include="layouts/main :: sidebar(${user})">
     </th:block>
 
     <div id="blog-content" class="content container">
-        <th:block th:include="layouts/blog :: list(${blogs})">Layout</th:block>
+        <th:block th:include="layouts/blog :: list(${blogs}, '/blog/'+${user.username})">Layout</th:block>
     </div>
 
     <th:block th:include="layouts/main :: scripts">

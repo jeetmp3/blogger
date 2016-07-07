@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="list(blogs)">
+<th:block th:fragment="list(blogs, paginationUrl)">
     <div class="posts">
-        <div class="post" th:each="blog : ${blogs}">
+        <div class="post" th:each="blog : ${blogs.getContent()}">
             <h2 class="post-title">
                 <a href="javascript:void(0)" th:text="${blog.title}"
                    th:href="@{${'/blog/'+blog.author.username+'/'+blog.year+'/'+blog.month+'/'+blog.day+'/'+blog.titleLink}}">
                 </a>
             </h2>
-                    <span class="post-date font-size-15px">
-                        <span>
-                            <a href="" th:text="${blog.author.name}"></a>
-                        </span>
-                        <strong class="margin-left-10">
-                            <em th:text="${T(me.blogger.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></em>
-                        </strong>
-                    </span>
+            <span class="post-date font-size-15px">
+                <span>
+                    <a href="javascript:void(0)" th:href="@{${'/blog/'+blog.author.username}}" th:text="${blog.author.name}"></a>
+                </span>
+                <strong class="margin-left-10">
+                    <em th:text="${T(com.myblogspro.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></em>
+                </strong>
+            </span>
             <p th:text="${blog.description}"></p>
         </div>
+    </div>
+    <div th:if="${pagination}" class="pagination">
+        <span class="pagination-item older">
+            <a href="#" th:if="${pagination.page gt 0}" th:href="@{${paginationUrl}(page=${pagination.page == 0 ? 0 : pagination.page - 1},max=5)}" th:text="Olders">Olders</a>
+            <span th:if="${pagination.page eq 0}" th:text="Olders">Olders</span>
+        </span>
+        <span class="pagination-item newer">
+            <a href="#" th:if="${pagination.page lt blogs.getTotalPages() - 1}"
+               th:href="@{${paginationUrl}(page=${pagination.page == blogs.getTotalPages() ? pagination.page :  pagination.page + 1},max=5)}"
+               th:text="Newer">Newer</a>
+            <span th:if="${pagination.page eq blogs.getTotalPages() - 1}" th:text="Newers">Newers</span>
+        </span>
     </div>
 </th:block>
 </html>

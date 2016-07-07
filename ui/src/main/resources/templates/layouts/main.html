@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title th:inline="text">
-        [[#{app.title}]] [[${suffix != null ?: ''}]]
-        My Blogs
+        [[#{app.title}]] [[${suffix?: ''}]]
     </title>
 
     <link href="../../public/css/poole.css" th:href="@{/css/poole.css}" rel="stylesheet" type="text/css"/>
@@ -22,7 +21,7 @@
         <div class="sidebar">
             <div class="container">
                 <div class="sidebar-about">
-                    <a href="/admin/index" th:href="@{/amdin/index}">
+                    <a href="/admin/index" th:href="@{${'/blog/'+user.username}}">
                         <img class="logo" th:if="${user.profilePicture != null}" th:src="${user.profilePicture}"
                              src="https://scontent.fdel1-1.fna.fbcdn.net/t31.0-1/c1220.265.480.480/s160x160/13403268_1161454917250853_3605285300566556179_o.jpg"/>
                     </a>
@@ -34,8 +33,8 @@
                     </p>
                 </div>
                 <nav class="sidebar-nav">
-                    <a href="/admin/list" class="sidebar-nav-item active" th:href="@{/admin/list}">All Blogs</a>
-                    <a href="/admin/create" th:href="@{/admin/create}" class="sidebar-nav-item">Create New</a>
+                    <a href="/admin/list" class="sidebar-nav-item active" th:href="@{/blog/index}">Home</a>
+                    <a href="" class="sidebar-nav-item">Search</a>
                     <a href="/" class="sidebar-nav-item">About</a>
                     <a id="logout-link" href="javascript:void(0)" class="sidebar-nav-item">Logout</a>
                     <form id="logout-form" action="/logout" th:action="@{/logout}" method="post"></form>
@@ -47,6 +46,12 @@
     <div id="blog-content" class="content container">
 
     </div>
+
+    <th:block th:fragment="dialogs">
+        <div id="search-dialog" hidden="hidden">
+
+        </div>
+    </th:block>
 
     <th:block th:fragment="scripts">
         <script src="../../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
