@@ -15,10 +15,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.myblogspro.constants.CoreConstants.*;
 
 /**
  * @author Jitendra Singh.
@@ -43,6 +46,7 @@ public class AdminService {
 					.setContent(blogCO.getContent())
 					.setDescription(blogCO.getDescription())
 					.setDateCreated(LocalDateTime.now())
+					.setTags(Arrays.asList(blogCO.getTags().split(SPACE)))
 					.setActive(true);
 			blogRepository.save(blog);
 		}

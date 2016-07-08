@@ -69,3 +69,25 @@
     width: 25%;
     float: left;
 }
+
+.tags {
+    margin-left: 15px;
+}
+
+.tag {
+    border-radius: 1px;
+    background-color: #C0C0C0;
+    padding: 3px;
+    margin-left: 5px;
+    font-size: 15px;
+    color: #000;
+}
+
+.tag:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.tag:visited {
+    text-decoration: none;
+}

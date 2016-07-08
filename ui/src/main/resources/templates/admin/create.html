@@ -16,7 +16,8 @@
             <div class="post">
                 <form id="create-new-blog-form" class="blog-form" action="/admin/save" th:action="@{/admin/save}" method="post">
                     <input type="text" name="title" placeholder="Title"/>
-                    <input class="margin-bottom-10" type="text" name="description" placeholder="Description"/>
+                    <input type="text" name="description" placeholder="Description"/>
+                    <input type="text" name="tags" placeholder="Tags (space separated tags)"/>
                     <textarea id="ck-editor-text-area" name="content"></textarea>
                 </form>
             </div>

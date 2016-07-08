@@ -42,7 +42,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute BlogCO blogCO, Model model) {
+	public String save(@ModelAttribute BlogCO blogCO) {
 		if (ObjectUtils.isEmpty(blogCO)) {
 			return "admin/create";
 		} else {

@@ -17,8 +17,14 @@
             <div class="post">
                 <h1 class="post-title" th:text="${blog.title}">
                 </h1>
-                <span class="post-date"
-                      th:text="${T(com.myblogspro.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}"></span>
+                <span class="post-date" th:inline="text"
+                      > [[${T(com.myblogspro.utils.DateUtils).formatDate(blog.dateCreated, 'dd MMM yyyy')}]]
+                    <span class="tags">
+                        <a class="tag" href="javascript:void(0)" th:href="@{/search/${tag}}" th:text="${tag}" th:each="tag : ${blog.tags}">
+                            TagLink
+                        </a>
+                    </span>
+                </span>
                 <p th:utext="${blog.content}"></p>
             </div>
         </div>
