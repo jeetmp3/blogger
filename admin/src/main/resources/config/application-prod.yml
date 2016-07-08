@@ -1,0 +1,4 @@
+application:
+    image:
+        upload:
+            path: /home/ubuntu/images
