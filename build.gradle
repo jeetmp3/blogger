@@ -20,6 +20,7 @@ version = '1.0'
 
 war {
     baseName = 'ROOT'
+    version = ""
 }
 
 allprojects {
