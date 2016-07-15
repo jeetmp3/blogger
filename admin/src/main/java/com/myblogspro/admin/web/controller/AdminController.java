@@ -28,7 +28,7 @@ public class AdminController {
 	@Autowired
 	UserRepository userRepository;
 
-	@RequestMapping({"/index", "/list"})
+	@RequestMapping({"/index", "/list", "/"})
 	public String index(Model model) {
 		BloggerUserDetails userDetails = (BloggerUserDetails) springSecurityService.getUserDetails().get();
 		User user = userRepository.findOne(userDetails.getId());

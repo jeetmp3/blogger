@@ -30,7 +30,6 @@ public class Bootstrap {
 		if(ObjectUtils.isEmpty(user)) {
 			user = new User().setName("Jitendra Bisht").setUsername("jeetmp3").setEmail("jeet.mp3@gmail.com")
 					.setPassword("admin").setRole("ADMIN").setActive(true)
-					.setProfilePicture("/file/browse?name=IMG_8782.JPG")
 			.setAbout("Sr. Software Engineer, Open source committer, Blogger");
 			userRepository.save(user);
 		}
@@ -41,7 +40,6 @@ public class Bootstrap {
 		if(ObjectUtils.isEmpty(user)) {
 			user = new User().setName("Simranjit Kour").setUsername("simmi").setEmail("simranjit.kour@gmail.com")
 					.setPassword("admin").setRole("ADMIN").setActive(true)
-					.setProfilePicture("/file/browse?name=khargosh.jpg")
 					.setAbout("Sr. Software Engineer, Open source committer, Blogger");
 			userRepository.save(user);
 		}

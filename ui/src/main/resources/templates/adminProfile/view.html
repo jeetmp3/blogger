@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="layouts/admin :: header">
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+    </th:block>
+</head>
+<body>
+<th:block th:include="layouts/admin :: sidebar(${CURRENT_USER})">
+
+</th:block>
+<div id="blog-content" class="content container">
+    <form method="post">
+        <table class="blogs-table-list" border="0">
+            <tr>
+                <td><b>Name</b></td>
+                <td th:text="${user.name}">
+                </td>
+            </tr>
+            <tr>
+                <td><b>Date Of Birth</b></td>
+                <td th:text="${T(com.myblogspro.utils.DateUtils).formatDate(user.dateOfBirth)}">
+                </td>
+            </tr>
+            <tr>
+                <td><b>Profile Picture</b></td>
+                <td>
+                    <img th:src="@{/file/browse(name=${user.profilePicture})}" class="logo" width="250px"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<th:block th:include="layouts/admin :: scripts">
+    <script src="../../public/js/jquery-ui.js"></script>
+</th:block>
+<script>
+    jQuery("#dob").datepicker();
+</script>
+</body>
+</html>

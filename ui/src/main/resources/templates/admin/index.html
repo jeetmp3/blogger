@@ -7,7 +7,7 @@
     </th:block>
 </head>
 <body>
-    <th:block th:include="layouts/admin :: sidebar(${CURRENT_USER.profilePicture}, ${CURRENT_USER.name}, ${CURRENT_USER.about})">
+    <th:block th:include="layouts/admin :: sidebar(${CURRENT_USER})">
 
     </th:block>
     <div id="blog-content" class="content container">

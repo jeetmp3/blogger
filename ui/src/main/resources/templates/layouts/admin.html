@@ -13,26 +13,29 @@
     <link href="../../public/css/app.css" th:href="@{/css/app.css}" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface"/>
-</head>
-<body ng-app="">
 
-    <th:block th:fragment="sidebar(profilePic, authorName, aboutAuthor)">
+    <link href="../../public/css/jquery-ui.css" th:href="@{/css/jquery-ui.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <th:block th:fragment="sidebar(user)">
         <div class="sidebar">
             <div class="container">
                 <div class="sidebar-about">
-                    <a href="/admin/index" th:href="@{/amdin/index}">
-                        <img class="logo" th:src="${profilePic}" src="https://scontent.fdel1-1.fna.fbcdn.net/t31.0-1/c1220.265.480.480/s160x160/13403268_1161454917250853_3605285300566556179_o.jpg"/>
+                    <a href="/admin/index" th:href="@{/admin/index}">
+                        <img class="logo" th:src="@{/file/browse(name=${user.profilePicture})}" src="https://scontent.fdel1-1.fna.fbcdn.net/t31.0-1/c1220.265.480.480/s160x160/13403268_1161454917250853_3605285300566556179_o.jpg"/>
                     </a>
                     <h2>
-                        <a href="/admin/index" th:href="@{/amdin/index}" th:text="${authorName}">Heading</a>
+                        <a href="/admin/index" th:href="@{/admin/index}" th:text="${user.name}">Heading</a>
                     </h2>
-                    <p class="lead" th:text="${aboutAuthor}">
+                    <p class="lead" th:text="${user.about}">
                         uncomplicated content. and this is <a href="#">link</a>
                     </p>
                 </div>
                 <nav class="sidebar-nav">
                     <a href="/admin/list" class="sidebar-nav-item active" th:href="@{/admin/list}">All Blogs</a>
                     <a href="/admin/create" th:href="@{/admin/create}" class="sidebar-nav-item">Create New</a>
+                    <a href="/admin/profile/view" th:href="@{/admin/profile/view}" class="sidebar-nav-item">Profile</a>
                     <a href="/" class="sidebar-nav-item">About</a>
                     <a id="logout-link" href="javascript:void(0)" class="sidebar-nav-item">Logout</a>
                     <form id="logout-form" action="/logout" th:action="@{/logout}" method="post"></form>
@@ -47,6 +50,7 @@
 
     <th:block th:fragment="scripts">
         <script src="../../public/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+        <script src="../../public/js/jquery-ui.js" th:src="@{/js/jquery-ui.js}"></script>
         <script src="../../public/js/blogger.js" th:src="@{/js/blogger.js }"></script>
     </th:block>
 </body>

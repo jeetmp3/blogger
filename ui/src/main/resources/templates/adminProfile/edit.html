@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="layouts/admin :: header">
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+    </th:block>
+</head>
+<body>
+    <th:block th:include="layouts/admin :: sidebar(${CURRENT_USER})">
+
+    </th:block>
+    <div id="blog-content" class="content container">
+        <form method="post">
+            <table class="blogs-table-list">
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" name="name" class="form-control" th:value="${user.name}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td>
+                    <td>
+                        <input type="text" id="dob" name="dateOfBirth" class="form-control" th:value="${user.dateOfBirth}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Profile Picture</td>
+                    <td>
+                        <input type="file" class="form-control" name="profilePicture"/>
+                        <img th:src="@{/file/browse(name=${user.profilePicture})}" class="logo" width="250px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="btn btn-primary" value="Update"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <th:block th:include="layouts/admin :: scripts">
+        <script src="../../public/js/jquery-ui.js"></script>
+    </th:block>
+    <script>
+        jQuery("#dob").datepicker();
+    </script>
+</body>
+</html>

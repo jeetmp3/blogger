@@ -1,5 +1,6 @@
 package com.myblogspro.utils;
 
+import com.myblogspro.constants.CoreConstants;
 import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ public final class DateUtils {
 			pattern = DEFAULT_DATE_FORMAT;
 		}
 		if(ObjectUtils.isEmpty(dateTime)) {
-			return null;
+			return CoreConstants.EMPTY_STRING;
 		}
 		return dateTime.format(DateTimeFormatter.ofPattern(pattern));
 	}
